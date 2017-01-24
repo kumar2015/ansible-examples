@@ -6,10 +6,7 @@
    - java-1.8.0-openjdk
    - libselinux-python
    - libsemanage-python
-
-- name: Download JBoss from jboss.org
-  get_url: url=https://developers.redhat.com/download-manager/file/jboss-eap-7.0.0-installer.jar dest=/opt/jboss-eap-7.0.0.Final.zip
-
+ 
 - name: Extract archive
   unarchive: dest=/usr/share src=/opt/jboss-eap-7.0.0.zip creates=/usr/share/jboss-eap copy=no 
 
