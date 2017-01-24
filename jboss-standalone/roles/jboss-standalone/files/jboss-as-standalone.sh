@@ -22,7 +22,7 @@ export JBOSS_USER
 
 # Load JBoss AS init.d configuration.
 if [ -z "$JBOSS_CONF" ]; then
-  JBOSS_CONF="/etc/jboss-as/jboss-as.conf"
+  JBOSS_CONF="/etc/jboss-eap/jboss-eap.conf"
 fi
 
 [ -r "$JBOSS_CONF" ] && . "${JBOSS_CONF}"
@@ -30,17 +30,17 @@ fi
 # Set defaults.
 
 if [ -z "$JBOSS_HOME" ]; then
-  JBOSS_HOME=/usr/share/jboss-as
+  JBOSS_HOME=/usr/share/jboss-eap
 fi
 export JBOSS_HOME
 
 if [ -z "$JBOSS_PIDFILE" ]; then
-  JBOSS_PIDFILE=/var/run/jboss-as/jboss-as-standalone.pid
+  JBOSS_PIDFILE=/var/run/jboss-eap/jboss-eap-standalone.pid
 fi
 export JBOSS_PIDFILE
 
 if [ -z "$JBOSS_CONSOLE_LOG" ]; then
-  JBOSS_CONSOLE_LOG=/var/log/jboss-as/console.log
+  JBOSS_CONSOLE_LOG=/var/log/jboss-eap/console.log
 fi
 
 if [ -z "$STARTUP_WAIT" ]; then
