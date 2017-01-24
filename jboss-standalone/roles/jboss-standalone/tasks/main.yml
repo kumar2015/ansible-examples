@@ -3,32 +3,32 @@
   yum: name={{item}} state=present
   with_items:
    - unzip
-   - java-1.7.0-openjdk
+   - java-1.8.0-openjdk
    - libselinux-python
    - libsemanage-python
 
 - name: Download JBoss from jboss.org
-  get_url: url=http://download.jboss.org/jbossas/7.1/jboss-as-7.1.1.Final/jboss-as-7.1.1.Final.zip dest=/opt/jboss-as-7.1.1.Final.zip
+  get_url: url=https://developers.redhat.com/download-manager/file/jboss-eap-7.0.0-installer.jar dest=/opt/jboss-eap-7.0.0.Final.zip
 
 - name: Extract archive
-  unarchive: dest=/usr/share src=/opt/jboss-as-7.1.1.Final.zip creates=/usr/share/jboss-as copy=no 
+  unarchive: dest=/usr/share src=/opt/jboss-eap-7.0.0.zip creates=/usr/share/jboss-eap copy=no 
 
   # Rename the dir to avoid encoding the version in the init script
 - name: Rename install directory
-  command: chdir=/usr/share /bin/mv jboss-as-7.1.1.Final jboss-as creates=/usr/share/jboss-as
+  command: chdir=/usr/share /bin/mv jboss-eap-7.0.0 jboss-eap creates=/usr/share/jboss-eap
 
 - name: Copying standalone.xml configuration file
-  template: src=standalone.xml dest=/usr/share/jboss-as/standalone/configuration/
+  template: src=standalone.xml dest=/usr/share/jboss-eap/standalone/configuration/
   notify: restart jboss
 
 - name: Add group "jboss"
   group: name=jboss
 
 - name: Add user "jboss"
-  user: name=jboss group=jboss home=/usr/share/jboss-as
+  user: name=jboss group=jboss home=/usr/share/jboss-eap
 
 - name: Change ownership of JBoss installation
-  file: path=/usr/share/jboss-as/ owner=jboss group=jboss state=directory recurse=yes
+  file: path=/usr/share/jboss-eap/ owner=jboss group=jboss state=directory recurse=yes
 
 - name: Copy the init script
   copy: src=jboss-as-standalone.sh dest=/etc/init.d/jboss mode=0755
