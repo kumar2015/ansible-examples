@@ -560,18 +560,4 @@
         </outbound-socket-binding>
     </socket-binding-group>
 
-    <deployments>
-        <deployment name="sqljdbc-4.1.jar" runtime-name="sqljdbc-4.1.jar">
-            <content sha1="d9bb0d6c413a182e4242e22ccfe689542b3924e2"/>
-        </deployment>
-        <deployment name="ojdbc7.jar" runtime-name="ojdbc7.jar">
-            <content sha1="a2348e4944956fac05235f7cd5d30bf872afb157"/>
-        </deployment>
-        <deployment name="wmq.jmsra.rar" runtime-name="wmq.jmsra.rar">
-            <content sha1="e882565f942b4b6432e028c260e9f7f1720a30c0"/>
-        </deployment>
-        <deployment name="pc.war" runtime-name="pc.war">
-            <content sha1="df6629a729de4091fcb1bee127df2dbbc44a1253"/>
-        </deployment>
-    </deployments>
-</server>
+    </server>
