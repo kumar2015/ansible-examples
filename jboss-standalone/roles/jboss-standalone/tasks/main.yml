@@ -29,10 +29,10 @@
 
 - name: Copy the init script
   copy: src=jboss-as-standalone.sh dest=/etc/init.d/jboss mode=0755
-
+  
 - name: Workaround for systemd bug
-  service: name=jboss state=started
-
+  shell: service jboss start && systemctl enable EAP_SERVICE_NAME.service
+  
 - name: Enable JBoss to be started at boot
   service: name=jboss enabled=yes state=started
 
