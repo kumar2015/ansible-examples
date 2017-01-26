@@ -14,9 +14,7 @@
 - name: Rename install directory
   command: chdir=/usr/share /bin/mv jboss-eap-7.0 jboss-eap creates=/usr/share/jboss-eap
 
-- name: Copying standalone.xml configuration file
-  template: src=standalone.xml dest=/usr/share/jboss-eap/standalone/configuration/
-  notify: restart jboss
+ 
 
 - name: Add group "jboss"
   group: name=jboss
