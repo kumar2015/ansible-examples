@@ -4,4 +4,4 @@
 - hosts: all
 
   roles:
-    - ansibleeap67
+    - jboss-standalone
