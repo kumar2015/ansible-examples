@@ -28,10 +28,13 @@
   file: path=/usr/share/jboss-eap/ owner=jboss group=jboss state=directory recurse=yes
 
 - name: Copy the init script
-  copy: src=jboss-as-standalone.sh dest=/etc/init.d/jboss mode=0755
+  copy: src=jboss-eap.conf dest=/etc/default mode=0755
+  
+- name: Copy the init script
+  copy: src=/usr/share/jboss-eap/bin/init.d/jboss-eap-rhel.sh dest=/etc/init.d/jboss mode=0755
   
 - name: Workaround for systemd bug
-  shell: service jboss start && systemctl enable jboss
+  shell: service jboss start && chkconfig jboss on
   
 - name: Enable JBoss to be started at boot
   service: name=jboss enabled=yes state=started
